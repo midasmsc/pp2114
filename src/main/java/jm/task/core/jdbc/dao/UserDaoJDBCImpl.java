@@ -27,9 +27,7 @@ public class UserDaoJDBCImpl implements UserDao {
             logger.info("Таблица создана");
         } catch (SQLException e) {
             e.printStackTrace();
-
         }
-
     }
 
     public void dropUsersTable() {
@@ -41,7 +39,6 @@ public class UserDaoJDBCImpl implements UserDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     public void saveUser(String name, String lastName, byte age) {
@@ -61,9 +58,7 @@ public class UserDaoJDBCImpl implements UserDao {
         } catch (SQLException | NullPointerException e) {
             throw new RuntimeException("Ошибка сохранения user", e);
         }
-
     }
-
 
     public void removeUserById(long id) {
         try (Connection connection = Util.getConnection();
@@ -75,7 +70,6 @@ public class UserDaoJDBCImpl implements UserDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     public List<User> getAllUsers() {
@@ -91,7 +85,7 @@ public class UserDaoJDBCImpl implements UserDao {
                 users.add(user);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            e.fillInStackTrace();
         }
         return users;
     }
@@ -102,8 +96,7 @@ public class UserDaoJDBCImpl implements UserDao {
             statement.executeUpdate("TRUNCATE TABLE users");
             logger.info("Строки в таблице очищены");
         } catch (SQLException e) {
-            e.printStackTrace();
-
+            e.fillInStackTrace();
         }
     }
 }
