@@ -8,18 +8,14 @@ import javax.persistence.Table;
 public class User {
     @Id
     private Long id;
-
     @Column
     private String name;
-
     @Column
     private String lastName;
-
     @Column
     private Byte age;
 
     public User() {
-
     }
 
     public User(String name, String lastName, Byte age) {
